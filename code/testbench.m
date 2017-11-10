@@ -47,7 +47,7 @@ for i=0:n
                             numPassed = numPassed + 1;
                         else
                             numFailed = numFailed + 1;
-                            failureLog = [failureLog; s1, t1, s2, t2];
+                            failureLog = [failureLog; s1, t1, s2, t2];                    
                         end
                     end
                 end

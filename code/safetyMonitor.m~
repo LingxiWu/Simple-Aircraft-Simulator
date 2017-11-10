@@ -14,11 +14,11 @@ function [ flag ] = safetyMonitor( in1, in2 )
 if(abs(in1.x - in2.x) <= 2 && abs(in1.y - in2.y) <= 2 )    
     in1.m = in2;
     in2.m = in1;
-    flag = false;
-    return
 else
     in1.m = [];
     in2.m = [];
+    flag = true;
+    return
 end
 
 % Calculate the position of in1 at the end of this step.
@@ -54,12 +54,12 @@ end
 % Check if the safety is violated.
 if((in1_x_next==in2.x)&&(in1_y_next==in2.y)&&(in2_x_next==in1.x)...
         &&(in2_y_next==in1.y)) % collide.
-    flag = true;
+    flag = false;
 else
     if(abs(in1_x_next - in2_x_next)+abs(in1_y_next - in2_y_next)>=0.5)
-        flag = false;
-    else
         flag = true;
+    else
+        flag = false;
     end
 end
 
